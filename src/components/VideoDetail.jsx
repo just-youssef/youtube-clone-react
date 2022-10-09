@@ -31,50 +31,41 @@ const VideoDetail = () => {
       <Box>
         <ReactPlayer controls url={`https://www.youtube.com/watch?v=${id}`} width="auto" height="80vh" />
         
-        <Box p={2}>
-          <Typography variant="h4" component="div" fontWeight="bold" color="#fff">
-            {title}
-          </Typography>
+        <Typography variant="h4" component="div" fontWeight="bold" color="#fff" pt={2}>
+          {title}
+        </Typography>
 
-          {/* <Typography variant="h6" component="div" color="#bebebe" pt={1}>
-            {publishedAt}
-          </Typography> */}
-        </Box>
+        <Stack direction="row" gap={2} justifyContent="end" pt={2}>
+          <Chip 
+            icon={<ThumbUpIcon />} 
+            label={
+              <Typography variant="h6" component="div" color="#bebebe">
+                {parseInt(likeCount).toLocaleString()} Likes
+              </Typography>
+            }
+          />
 
-        <Stack direction="row" justifyContent="space-between" color="#fff" px={2}>
-          <Link to={`/channel/${channelId}`}>
-            <Typography variant="h5" component="div" fontWeight="bold" color="#fff">
-              {channelTitle}
-              <CheckCircle sx={{ml: "5px", color: "#FC1503"}}/>
-            </Typography>
-          </Link>
-
-
-          <Stack direction="row" gap={2}>
-            <Chip 
-              icon={<ThumbUpIcon />} 
-              label={
-                <Typography variant="body1" component="div" color="#bebebe">
-                  {parseInt(likeCount).toLocaleString()} Likes
-                </Typography>
-              }
-            />
-
-            <Chip 
-              p={2}
-              icon={<VisibilityIcon />} 
-              label={
-                <Typography variant="body1" component="div" color="#bebebe">
-                  {parseInt(viewCount).toLocaleString()} Views
-                </Typography>
-              }
-            />
-          </Stack>
+          <Chip 
+            p={2}
+            icon={<VisibilityIcon />} 
+            label={
+              <Typography variant="h6" component="div" color="#bebebe">
+                {parseInt(viewCount).toLocaleString()} Views
+              </Typography>
+            }
+          />
         </Stack>
+
+        <Link to={`/channel/${channelId}`}>
+          <Typography variant="h5" component="div" fontWeight="bold" color="#fff" pt={2}>
+            {channelTitle}
+            <CheckCircle sx={{ml: "5px", color: "#FC1503"}}/>
+          </Typography>
+        </Link>
       </Box>
       
       <Divider color="#bebebe" />
-      <Typography variant="h5" component="div" fontWeight="bold" color="#fff" px={2}>
+      <Typography variant="h5" component="div" fontWeight="bold" color="#fff">
           Related Videos To: <span style={{color: "#F31503"}}>{title}</span>
         </Typography>
       <Videos videos={relatedVideos} justifyContent="center" />
