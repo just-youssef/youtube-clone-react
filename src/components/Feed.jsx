@@ -23,7 +23,7 @@ const Feed = () => {
           {selected} <span style={{color: "#F31503"}}>Vidoes</span>
         </Typography>
 
-        <Videos videos={videos} justifyContent={{xs:"center", md: "start"}} />
+        <Videos videos={videos} justifyContent="center" />
       </Box>
     </Stack>
   )
